@@ -34,19 +34,19 @@ namespace ArraysHomework
 
 
             // what wrong with this array declaration? Fix it and make it compile
-            string[] stringArray = new string[5];
+            string stringArray = new string[5];
 
             // What about this one? Fix it and make it compile
-            bool[] boolArray = new bool[15];
+            bool[] boolArray = new bool[];
 
             // What about this one? Fix it and make it compile
-            bool[] boolArray2 = new bool[20];
+            bool[] boolArray2 = new [20];
 
             // Take this array and copy its contents into a new array 
             char[] copyMe = { 'a', 'b', 'c' };
             char[] copiedArray = new char[3];
 
-            copyMe.CopyTo(copiedArray, 0);
+            
 
             Assert.IsTrue(copiedArray.Length == copyMe.Length);
             Assert.IsTrue(copiedArray[0] == 'a');
@@ -55,15 +55,13 @@ namespace ArraysHomework
 
             // Swap the last and first value of this array.
             string[] swapMyValues = { "first", "middle", "last" };
-            swapMyValues[0] = "last";
-            swapMyValues[2] = "first";
+            
             Assert.IsTrue(swapMyValues[0] == "last");
             Assert.IsTrue(swapMyValues[2] == "first");
 
-            //Combine these two arrays into a 3rd array;
+            //Combine these two arrays into a 3rd array (put your code after the for loop);
             int[] array1 = new int[25];
             int[] array2 = new int[25];
-            int[] combined = new int[50];
 
             // just a little fun to fill them
             int up = 0;
@@ -75,13 +73,16 @@ namespace ArraysHomework
                 
             }
 
-            // combine array1 and array 2 into an array named combined
-            for (int i = 0; i < array1.Length; i++)
-            {
-                combined[i] = array1[i];
-                combined[array1.Length + i] = array2[i];
-            }
+            // Your code here: combine array1 and array2 into an array named combined
+            // Everything from array1 should be in the first half of combined, and everything
+            // from array2 should be in the second half of combined.
+            
+            
             Assert.IsTrue(combined.Length == 50);
+            Assert.IsTrue(combined[0] == array1[0]);
+            Assert.IsTrue(combined[24] == array1[24]);
+            Assert.IsTrue(combined[25] == array2[0]);
+            Assert.IsTrue(combined[49] == array2[24]);
         }
 
 
@@ -129,7 +130,9 @@ namespace ArraysHomework
             Assert.IsTrue(swapMyValues[0] == "last");
             Assert.IsTrue(swapMyValues[2] == "first");
 
-            //Combine these two lists by absorbing copy1 into copy2;
+            //Combine these two lists by absorbing copy1 into copy2 (so in the end, the first half of copy2
+            //is everything that was already in copy2, and the second half is everything that's in copy1.
+            // Put your code after the for loop.
             List<int> copy1 = new List<int>();
             List<int> copy2 = new List<int>();
 
@@ -142,7 +145,7 @@ namespace ArraysHomework
                 copy2.Add(down);
             }
 
-            // combine copy1 into copy 2
+            // Your code here: combine copy1 into copy 2
 
             Assert.IsTrue(copy2.Count == 50);
 
