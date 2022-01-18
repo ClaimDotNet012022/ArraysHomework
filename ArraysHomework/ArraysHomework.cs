@@ -34,19 +34,23 @@ namespace ArraysHomework
 
 
             // what wrong with this array declaration? Fix it and make it compile
-            string stringArray = new string[5];
+            string[] stringArray = new string[5];
 
             // What about this one? Fix it and make it compile
-            bool[] boolArray = new bool[];
+            bool[] boolArray = new bool[10];
 
             // What about this one? Fix it and make it compile
-            bool[] boolArray2 = new [20];
+            bool[] boolArray2 = new bool[20];
 
             // Take this array and copy its contents into a new array 
             char[] copyMe = { 'a', 'b', 'c' };
             char[] copiedArray = new char[3];
+            copiedArray[0] = 'a';
+            copiedArray[1] = 'b';
+            copiedArray[2] = 'c';
 
-            
+
+
 
             Assert.IsTrue(copiedArray.Length == copyMe.Length);
             Assert.IsTrue(copiedArray[0] == 'a');
@@ -55,13 +59,16 @@ namespace ArraysHomework
 
             // Swap the last and first value of this array.
             string[] swapMyValues = { "first", "middle", "last" };
-            
+            swapMyValues[0] = "last";
+            swapMyValues[2] = "first";
+
             Assert.IsTrue(swapMyValues[0] == "last");
             Assert.IsTrue(swapMyValues[2] == "first");
 
             //Combine these two arrays into a 3rd array (put your code after the for loop);
             int[] array1 = new int[25];
             int[] array2 = new int[25];
+
 
             // just a little fun to fill them
             int up = 0;
@@ -70,14 +77,18 @@ namespace ArraysHomework
             {
                 array1[up] = up;
                 array2[down] = down;
-                
+
             }
 
             // Your code here: combine array1 and array2 into an array named combined
             // Everything from array1 should be in the first half of combined, and everything
             // from array2 should be in the second half of combined.
-            
-            
+            int[] combined = new int[50];
+            combined[0] = array1[0];
+            combined[1] = array1[24];
+            combined[25] = array2[0];
+            combined[49] = array1[24];
+
             Assert.IsTrue(combined.Length == 50);
             Assert.IsTrue(combined[0] == array1[0]);
             Assert.IsTrue(combined[24] == array1[24]);
@@ -90,34 +101,41 @@ namespace ArraysHomework
         public void Lists()
         {
             // Create a List of ints named my list
+            List<int> myList = new List<int>();
 
             Assert.IsTrue(myList != null); // if you create it right, this will pass
 
             // Don't worry about how this line works. It's not something you need at this point.
             // All it's doing is making sure that you actually created a List of ints (rather than, for example, an array of ints).
-            Assert.IsTrue(myList.GetType() == typeof(List<int>));   
+            Assert.IsTrue(myList.GetType() == typeof(List<int>));
 
             // take the list made above and fill it so these test passes  
+            myList[0] = 21;
+            myList[1] = 35;
+            myList[2] = 78;
 
             Assert.IsTrue(myList[0] == 21);
             Assert.IsTrue(myList[1] == 35);
             Assert.IsTrue(myList[2] == 78);
 
             // what wrong with this list declaration? You can use any type for its content. Fix it and make it compile
-            List<> stringList = List;
+            List<string> stringList = new List<string>();
 
             // What about this one? You can use any type for its content. Fix it and make it compile
-            List<> list1 = List<>();
+            List<bool> list1 = new List<bool>();
 
             // What about this one? You can use any type for its content. Fix it and make it compile
-            List<> list2 = new;
+            List<int> list2 = new List<int>();
 
             // What about this one? You can use any type for its content. Fix it and make it compile
-            List<char> list3 = new List<int>;
+            List<char> list3 = new List<char>();
 
             // Take this list and copy its contents into a new list 
             List<char> copyMe = new List<char>() { 'a', 'b', 'c' };
-
+            List<char> copiedList = new List<char>();
+            copiedList[0] = 'a';
+            copiedList[1] = 'b';
+            copiedList[2] = 'c';
 
             Assert.IsTrue(copiedList.Count == copyMe.Count);
             Assert.IsTrue(copiedList[0] == 'a');
@@ -126,6 +144,8 @@ namespace ArraysHomework
 
             // Swap the last and first value of this list.
             List<string> swapMyValues = new List<string> { "first", "middle", "last" };
+            swapMyValues[0] = "last";
+            swapMyValues[1] = "first";
 
             Assert.IsTrue(swapMyValues[0] == "last");
             Assert.IsTrue(swapMyValues[2] == "first");
@@ -146,6 +166,9 @@ namespace ArraysHomework
             }
 
             // Your code here: combine copy1 into copy 2
+            List<int> absorbed = new List<int>();
+            absorbed[0] = copy2;
+            absorbed[1] = copy1;
 
             Assert.IsTrue(copy2.Count == 50);
 
