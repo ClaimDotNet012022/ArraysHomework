@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ArraysHomework
 {
@@ -146,6 +147,8 @@ namespace ArraysHomework
             }
 
             // Your code here: combine copy1 into copy 2
+
+            copy2 = copy1.Concat(copy2).ToList();
 
             Assert.IsTrue(copy2.Count == 50);
 
