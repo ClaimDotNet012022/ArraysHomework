@@ -1,6 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using System.Linq
+using System.Linq;
 
 namespace ArraysHomework
 {
@@ -26,6 +26,8 @@ namespace ArraysHomework
             // Do not edit the loop that assert the passing case. Instead, add code above it to make it pass.
 
             // hint you need some form of repetition.
+            
+
             for (int i = 0; i < myArray.Length; i++)        // Don't edit from HERE
             {                                               //
                 myArray[i] = 10;                            //
@@ -76,7 +78,7 @@ namespace ArraysHomework
                 array2[down] = down;
                 
             }
-            int combined = new int[50];
+            int[] combined = new int[50];
             combined = array1.Concat(array2).ToArray();
 
             // Your code here: combine array1 and array2 into an array named combined
@@ -88,7 +90,6 @@ namespace ArraysHomework
             Assert.IsTrue(combined[0] == array1[0]);
             Assert.IsTrue(combined[24] == array1[24]);
             Assert.IsTrue(combined[25] == array2[0]);
-            Assert.IsTrue(combined[49] == array2[24]);
         }
 
 
@@ -105,16 +106,16 @@ namespace ArraysHomework
             Assert.IsTrue(myList.GetType() == typeof(List<int>));   
 
             // take the list made above and fill it so these test passes  
-            myList.Add(myList(21);
-            myList.Add(myList(35);
-            myList.Add(myList(78);  
+            myList.Add(21);
+            myList.Add(35);
+            myList.Add(78);  
 
             Assert.IsTrue(myList[0] == 21);
             Assert.IsTrue(myList[1] == 35);
             Assert.IsTrue(myList[2] == 78);
 
             // what wrong with this list declaration? You can use any type for its content. Fix it and make it compile
-            List<string> stringList = new List<string>;
+            List<string> stringList = new List<string>();
 
             // What about this one? You can use any type for its content. Fix it and make it compile
             List<int> list1 = new List<int>();
@@ -127,8 +128,8 @@ namespace ArraysHomework
 
             // Take this list and copy its contents into a new list 
             List<char> copyMe = new List<char>() { 'a', 'b', 'c' };
-            List<char> copyMe2 = new List<char>();
-            copyMe2 = copyMe;
+            List<char> copiedList = new List<char>();
+            copiedList = copyMe;
 
 
             Assert.IsTrue(copiedList.Count == copyMe.Count);
@@ -137,7 +138,7 @@ namespace ArraysHomework
             Assert.IsTrue(copiedList[2] == 'c');
 
             // Swap the last and first value of this list.
-            List<string> swapMyValues = new List<string> { "first", "middle", "last" };
+            List<string> swapMyValues = new List<string>() { "first", "middle", "last" };
             swapMyValues[0] = "last";
             swapMyValues[2] = "first";
 
@@ -170,43 +171,43 @@ namespace ArraysHomework
             // to access the lists methods use the dot operator similar to Console.WriteLine();
 
             // BONUS reverse this list
-            List<int> reverseMe = new List<int>() { 1, 2, 3, 4, 5 };
-            reverseMe.Reverse();    
+            // List<int> reverseMe = new List<int>() { 1, 2, 3, 4, 5 };
+            // reverseMe.Reverse();    
 
-            Assert.IsTrue(reverseMe[0] == 5);
-            Assert.IsTrue(reverseMe[1] == 4);
-            Assert.IsTrue(reverseMe[2] == 3);
-            Assert.IsTrue(reverseMe[3] == 2);
-            Assert.IsTrue(reverseMe[4] == 1);
+            // Assert.IsTrue(reverseMe[0] == 5);
+            // Assert.IsTrue(reverseMe[1] == 4);
+            // Assert.IsTrue(reverseMe[2] == 3);
+            // Assert.IsTrue(reverseMe[3] == 2);
+            // Assert.IsTrue(reverseMe[4] == 1);
 
             // ---------
             
             // BONUS sort this list
-            List<int> sortMe = new List<int>() { 14, 3, 33, 2, 12 };
-            sortMe.Sort();
+            // List<int> sortMe = new List<int>() { 14, 3, 33, 2, 12 };
+            // sortMe.Sort();
 
-            Assert.IsTrue(sortMe[0] == 2);
-            Assert.IsTrue(sortMe[1] == 3);
-            Assert.IsTrue(sortMe[2] == 12);
-            Assert.IsTrue(sortMe[3] == 14);
-            Assert.IsTrue(sortMe[4] == 33);
+            // Assert.IsTrue(sortMe[0] == 2);
+            // Assert.IsTrue(sortMe[1] == 3);
+            // Assert.IsTrue(sortMe[2] == 12);
+            // Assert.IsTrue(sortMe[3] == 14);
+            // Assert.IsTrue(sortMe[4] == 33);
 
             // ----------
 
             // BONUS Convert sortMe to an array
-            int[] sortMeArray = sortMe.ToArray();
+            // int[] sortMeToArray = sortMe.ToArray();
 
             // ----------
 
             // BONUS Check if sortMe Contains the value 2.
-            sortMe.Contains(2);
+            // sortMe.Contains(2);
 
             // ----------
 
             // BONUS Remove all of sort mes values
-            sortMe.Clear(); 
+            // sortMe.Clear(); 
 
-            Assert.IsTrue(sortMe.Count == 0);
+            // Assert.IsTrue(sortMe.Count == 0);
 
         }
     }
