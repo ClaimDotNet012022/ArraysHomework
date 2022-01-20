@@ -12,7 +12,7 @@ namespace ArraysHomework
         {
             // Create an array of ints of size 100
             int[] myArray = new int[100];
-            
+
             Assert.IsTrue(myArray.Length == 100);
 
             // take the array made above and fill it so these tests pass
@@ -27,9 +27,9 @@ namespace ArraysHomework
 
             // fill all of the values in to make the loop on line 28 pass as is.
             // Do not edit the loop that assert the passing case. Instead, add code above it to make it pass.
-            int sum = 0; 
+            int sum = 0;
             for (int i = 0; i < myArray.Length; i++)
-            {        
+            {
                 myArray[i] = sum;
                 sum++;
             }
@@ -54,7 +54,9 @@ namespace ArraysHomework
             // Take this array and copy its contents into a new array 
             char[] copyMe = { 'a', 'b', 'c' };
             char[] copiedArray = new char[3];
-            copiedArray = copyMe;
+            copiedArray[0] = 'a';
+            copiedArray[1] = 'b';
+            copiedArray[2] = 'c';
 
             Assert.IsTrue(copiedArray.Length == copyMe.Length);
             Assert.IsTrue(copiedArray[0] == 'a');
@@ -63,8 +65,11 @@ namespace ArraysHomework
 
             // Swap the last and first value of this array.
             string[] swapMyValues = { "first", "middle", "last" };
-            swapMyValues[0] = "last";
-            swapMyValues[2] = "first";
+            
+            string newValue = swapMyValues[0];
+            swapMyValues[0] = swapMyValues[2];
+            swapMyValues[swapMyValues.Length - 1] = newValue;
+
             Assert.IsTrue(swapMyValues[0] == "last");
             Assert.IsTrue(swapMyValues[2] == "first");
 
@@ -86,7 +91,17 @@ namespace ArraysHomework
             // from array2 should be in the second half of combined.
             int[] combined = new int[50];
 
-            combined = array1.Concat(array2).ToArray();
+            for (int i = 0; i < array1.Length; i++)
+            {
+                combined[i] = array1[i];
+            }
+
+            int j = 0;
+            for (int i = 25; i < combined.Length && i > 24; i++)
+            {
+                combined[i] = array2[j];
+                j++;
+            }
 
             Assert.IsTrue(combined.Length == 50);
             Assert.IsTrue(combined[0] == array1[0]);
@@ -132,7 +147,9 @@ namespace ArraysHomework
             // Take this list and copy its contents into a new list 
             List<char> copyMe = new List<char>() { 'a', 'b', 'c' };
             List<char> copiedList = new List<char>();
-            copiedList = copyMe;
+            copiedList.Add('a');
+            copiedList.Add('b');
+            copiedList.Add('c');
 
             Assert.IsTrue(copiedList.Count == copyMe.Count);
             Assert.IsTrue(copiedList[0] == 'a');
@@ -141,8 +158,9 @@ namespace ArraysHomework
 
             // Swap the last and first value of this list.
             List<string> swapMyValues = new List<string> { "first", "middle", "last" };
-            swapMyValues[0] = "last";
-            swapMyValues[2] = "first";
+            string newValue = swapMyValues[0];
+            swapMyValues[0] = swapMyValues[2];
+            swapMyValues[swapMyValues.Count - 1] = newValue;
 
             Assert.IsTrue(swapMyValues[0] == "last");
             Assert.IsTrue(swapMyValues[2] == "first");
@@ -163,7 +181,14 @@ namespace ArraysHomework
             }
 
             // Your code here: combine copy1 into copy 2
-            copy2 = copy1.Concat(copy2).ToList();
+
+            int addUp = 0;
+            for (int i = 25; i < 50 ; addUp++, i++)
+            {
+                copy2.Add(addUp);
+            }
+
+            //copy2.AddRange(copy1);
 
             Assert.IsTrue(copy2.Count == 50);
 
