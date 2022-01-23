@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ArraysHomework
 {
@@ -25,27 +26,31 @@ namespace ArraysHomework
             // Do not edit the loop that assert the passing case. Instead, add code above it to make it pass.
 
             // hint you need some form of repetition.
+            int sum = 0;
             for (int i = 0; i < myArray.Length; i++)        // Don't edit from HERE
             {                                               //
                 myArray[i] = 10;                            //
                 Assert.IsTrue(myArray[i] == 10);            // to HERE
-
+                sum++;
             }
 
 
             // what wrong with this array declaration? Fix it and make it compile
-            string stringArray = new string[5];
+            string[] stringArray = new string[5];
 
             // What about this one? Fix it and make it compile
-            bool[] boolArray = new bool[];
+            bool[] boolArray = new bool[5];
 
             // What about this one? Fix it and make it compile
-            bool[] boolArray2 = new [20];
+            bool[] boolArray2 = new bool[20];
 
             // Take this array and copy its contents into a new array 
             char[] copyMe = { 'a', 'b', 'c' };
             char[] copiedArray = new char[3];
 
+            copiedArray[0] = 'a';  
+            copiedArray[1] = 'b';  
+            copiedArray[2] = 'c';
             
 
             Assert.IsTrue(copiedArray.Length == copyMe.Length);
@@ -59,6 +64,10 @@ namespace ArraysHomework
             Assert.IsTrue(swapMyValues[0] == "last");
             Assert.IsTrue(swapMyValues[2] == "first");
 
+            string save0Value = swapMyValues[0];
+            swapMyValues[0] = swapMyValues[swapMyValues - 1];
+            swapMyValues[swapMyValues.Length - 1] = save0Value;
+
             //Combine these two arrays into a 3rd array (put your code after the for loop);
             int[] array1 = new int[25];
             int[] array2 = new int[25];
@@ -71,6 +80,19 @@ namespace ArraysHomework
                 array1[up] = up;
                 array2[down] = down;
                 
+            }
+
+            int[] combined = new int[50];
+
+            for (int i = 0; i < combined.Length; i++)
+            {
+                combined[i] = array1[i];
+            }
+            int sum = 0;
+            for (int i = 24; i < combined.Length; i++)
+            {
+                combined[i] = array2[sum];
+                sum++;
             }
 
             // Your code here: combine array1 and array2 into an array named combined
@@ -91,6 +113,8 @@ namespace ArraysHomework
         {
             // Create a List of ints named my list
 
+            List<int> myList = new List<int>(); 
+
             Assert.IsTrue(myList != null); // if you create it right, this will pass
 
             // Don't worry about how this line works. It's not something you need at this point.
@@ -99,25 +123,33 @@ namespace ArraysHomework
 
             // take the list made above and fill it so these test passes  
 
+            myList.Add(21);
+            myList.Add(35);
+            myList.Add(78);
+
             Assert.IsTrue(myList[0] == 21);
             Assert.IsTrue(myList[1] == 35);
             Assert.IsTrue(myList[2] == 78);
 
             // what wrong with this list declaration? You can use any type for its content. Fix it and make it compile
-            List<> stringList = List;
+            List<string> stringList = new List<string>();
 
             // What about this one? You can use any type for its content. Fix it and make it compile
-            List<> list1 = List<>();
+            List<int> list1 = new List<int>();
 
             // What about this one? You can use any type for its content. Fix it and make it compile
-            List<> list2 = new;
+            List<int> list2 = new List<int>();
 
             // What about this one? You can use any type for its content. Fix it and make it compile
-            List<char> list3 = new List<int>;
+            List<char> list3 = new List<char>();
 
             // Take this list and copy its contents into a new list 
             List<char> copyMe = new List<char>() { 'a', 'b', 'c' };
+            List<char> copiedList = new List<char>();
 
+            copiedList.Add('a');
+            copiedList.Add('b');
+            copiedList.Add('c');
 
             Assert.IsTrue(copiedList.Count == copyMe.Count);
             Assert.IsTrue(copiedList[0] == 'a');
@@ -126,6 +158,10 @@ namespace ArraysHomework
 
             // Swap the last and first value of this list.
             List<string> swapMyValues = new List<string> { "first", "middle", "last" };
+
+            string value0 = swapMyValues[0];
+            swapMyValues[0] = swapMyValues[swapMyValues.Length - 1];
+            swapMyValues[swapMyValues.Length - 1] = value0;
 
             Assert.IsTrue(swapMyValues[0] == "last");
             Assert.IsTrue(swapMyValues[2] == "first");
@@ -147,46 +183,61 @@ namespace ArraysHomework
 
             // Your code here: combine copy1 into copy 2
 
+            int sum = 0;
+            for (int i = 25; i < 50; i++)
+            {
+                copy2.Add(sum);
+                sum++;
+            }
+
             Assert.IsTrue(copy2.Count == 50);
 
 
-            // This is just a fun little section to explore the various methods on a list object.
-            // They are not counting against you because we have not yet covered methods.
-            // to access the lists methods use the dot operator similar to Console.WriteLine();
+            // this is just a fun little section to explore the various methods on a list object.
+            // they are not counting against you because we have not yet covered methods.
+            // to access the lists methods use the dot operator similar to console.writeline();
 
-            // BONUS reverse this list
+            // bonus reverse this list
             List<int> reverseMe = new List<int>() { 1, 2, 3, 4, 5 };
+            reverseMe.Reverse();
 
-            //Assert.IsTrue(reverseMe[0] == 5);
-            //Assert.IsTrue(reverseMe[1] == 4);
-            //Assert.IsTrue(reverseMe[2] == 3);
-            //Assert.IsTrue(reverseMe[3] == 2);
-            //Assert.IsTrue(reverseMe[4] == 1);
+            Assert.IsTrue(reverseMe[0] == 5);
+            Assert.IsTrue(reverseMe[1] == 4);
+            Assert.IsTrue(reverseMe[2] == 3);
+            Assert.IsTrue(reverseMe[3] == 2);
+            Assert.IsTrue(reverseMe[4] == 1);
 
             // ---------
             
             // BONUS sort this list
             List<int> sortMe = new List<int>() { 14, 3, 33, 2, 12 };
+            sortMe.Sort();  
 
-            //Assert.IsTrue(sortMe[0] == 2);
-            //Assert.IsTrue(sortMe[1] == 3);
-            //Assert.IsTrue(sortMe[2] == 12);
-            //Assert.IsTrue(sortMe[3] == 14);
-            //Assert.IsTrue(sortMe[4] == 33);
+            Assert.IsTrue(sortMe[0] == 2);
+            Assert.IsTrue(sortMe[1] == 3);
+            Assert.IsTrue(sortMe[2] == 12);
+            Assert.IsTrue(sortMe[3] == 14);
+            Assert.IsTrue(sortMe[4] == 33);
 
             // ----------
 
             // BONUS Convert sortMe to an array
 
+            int[] sortMe = new int[5] { 14, 3, 33, 2, 12 };
+
             // ----------
 
             // BONUS Check if sortMe Contains the value 2.
+
+            sortMe.Contains(2);
 
             // ----------
 
             // BONUS Remove all of sort mes values
 
-            //Assert.IsTrue(sortMe.Count == 0);
+            sortMe.Clear();
+
+            Assert.IsTrue(sortMe.Count == 0);
 
         }
     }
