@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ArraysHomework
 {
@@ -25,6 +26,11 @@ namespace ArraysHomework
             // Do not edit the loop that assert the passing case. Instead, add code above it to make it pass.
 
             // hint you need some form of repetition.
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                myArray[i] = 9;
+            }
+
             for (int i = 0; i < myArray.Length; i++)        // Don't edit from HERE
             {                                               //
                 myArray[i] = 10;                            //
@@ -83,11 +89,21 @@ namespace ArraysHomework
             // Your code here: combine array1 and array2 into an array named combined
             // Everything from array1 should be in the first half of combined, and everything
             // from array2 should be in the second half of combined.
+
             int[] combined = new int[50];
-            combined[0] = array1[0];
-            combined[1] = array1[24];
-            combined[25] = array2[0];
-            combined[49] = array1[24];
+            for (int i = 0; i <= array1.Length; i++)
+            {
+                combined[i] = array1[i];
+                return;
+            }
+
+            int j = 0;
+            for ( j = 0; j < array2.Length; j++)
+            {
+
+            }
+
+        
 
             Assert.IsTrue(combined.Length == 50);
             Assert.IsTrue(combined[0] == array1[0]);
@@ -110,9 +126,9 @@ namespace ArraysHomework
             Assert.IsTrue(myList.GetType() == typeof(List<int>));
 
             // take the list made above and fill it so these test passes  
-            myList[0] = 21;
-            myList[1] = 35;
-            myList[2] = 78;
+            myList.Add(21);
+            myList.Add(35);
+            myList.Add(78);
 
             Assert.IsTrue(myList[0] == 21);
             Assert.IsTrue(myList[1] == 35);
@@ -133,9 +149,9 @@ namespace ArraysHomework
             // Take this list and copy its contents into a new list 
             List<char> copyMe = new List<char>() { 'a', 'b', 'c' };
             List<char> copiedList = new List<char>();
-            copiedList[0] = 'a';
-            copiedList[1] = 'b';
-            copiedList[2] = 'c';
+            copiedList.Add('a');
+            copiedList.Add('b');
+            copiedList.Add('c');
 
             Assert.IsTrue(copiedList.Count == copyMe.Count);
             Assert.IsTrue(copiedList[0] == 'a');
@@ -144,14 +160,16 @@ namespace ArraysHomework
 
             // Swap the last and first value of this list.
             List<string> swapMyValues = new List<string> { "first", "middle", "last" };
-            swapMyValues[0] = "last";
-            swapMyValues[1] = "first";
+            string newValue = swapMyValues[0];
+            swapMyValues[0] = swapMyValues[2];
+            swapMyValues[swapMyValues.Count - 1] = newValue;
+
 
             Assert.IsTrue(swapMyValues[0] == "last");
             Assert.IsTrue(swapMyValues[2] == "first");
 
-            //Combine these two lists by absorbing copy1 into copy2 (so in the end, the first half of copy2
-            //is everything that was already in copy2, and the second half is everything that's in copy1.
+            //Combine these     two lists by absorbing copy1 into copy2         (so in the end,         the first half of copy2
+            //is everything that was already in copy2,           and the second half is everything that's in copy1.
             // Put your code after the for loop.
             List<int> copy1 = new List<int>();
             List<int> copy2 = new List<int>();
@@ -166,9 +184,14 @@ namespace ArraysHomework
             }
 
             // Your code here: combine copy1 into copy 2
-            List<int> absorbed = new List<int>();
-            absorbed[0] = copy2;
-            absorbed[1] = copy1;
+
+            int num = 0;
+            for (int i = 25; i < 50; num++, i++ )
+            {
+                copy2.Add(num);
+            }
+
+
 
             Assert.IsTrue(copy2.Count == 50);
 
@@ -179,38 +202,50 @@ namespace ArraysHomework
 
             // BONUS reverse this list
             List<int> reverseMe = new List<int>() { 1, 2, 3, 4, 5 };
+            reverseMe.Reverse();
 
-            //Assert.IsTrue(reverseMe[0] == 5);
-            //Assert.IsTrue(reverseMe[1] == 4);
-            //Assert.IsTrue(reverseMe[2] == 3);
-            //Assert.IsTrue(reverseMe[3] == 2);
-            //Assert.IsTrue(reverseMe[4] == 1);
+            Assert.IsTrue(reverseMe[0] == 5);
+            Assert.IsTrue(reverseMe[1] == 4);
+            Assert.IsTrue(reverseMe[2] == 3);
+            Assert.IsTrue(reverseMe[3] == 2);
+            Assert.IsTrue(reverseMe[4] == 1);
 
             // ---------
-            
+
             // BONUS sort this list
             List<int> sortMe = new List<int>() { 14, 3, 33, 2, 12 };
 
-            //Assert.IsTrue(sortMe[0] == 2);
-            //Assert.IsTrue(sortMe[1] == 3);
-            //Assert.IsTrue(sortMe[2] == 12);
-            //Assert.IsTrue(sortMe[3] == 14);
-            //Assert.IsTrue(sortMe[4] == 33);
+            sortMe.Sort();
+
+            Assert.IsTrue(sortMe[0] == 2);
+            Assert.IsTrue(sortMe[1] == 3);
+            Assert.IsTrue(sortMe[2] == 12);
+            Assert.IsTrue(sortMe[3] == 14);
+            Assert.IsTrue(sortMe[4] == 33);
 
             // ----------
 
             // BONUS Convert sortMe to an array
 
+            int[] sortedArray = sortMe.ToArray();
+
             // ----------
 
             // BONUS Check if sortMe Contains the value 2.
+
+            if (sortMe.Contains(2))
+            {
+                return;
+            }
 
             // ----------
 
             // BONUS Remove all of sort mes values
 
-            //Assert.IsTrue(sortMe.Count == 0);
+            sortMe.Clear();
+
+            Assert.IsTrue(sortMe.Count == 0);
 
         }
     }
-    }
+}
