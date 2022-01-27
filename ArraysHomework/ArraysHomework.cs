@@ -166,8 +166,8 @@ namespace ArraysHomework
             // Swap the last and first value of this list.
             List<string> swapMyValues = new List<string> { "first", "middle", "last" };
 
-                swapMyValues[0] = swapMyValues[2];
-                swapMyValues[2] = swapMyValues[0];
+            (swapMyValues[0], swapMyValues[2]) = (swapMyValues[2], swapMyValues[0]);
+              
 
             Assert.IsTrue(swapMyValues[0] == "last");
             Assert.IsTrue(swapMyValues[2] == "first");
