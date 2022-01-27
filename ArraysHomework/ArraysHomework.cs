@@ -86,13 +86,21 @@ namespace ArraysHomework
             // Your code here: combine array1 and array2 into an array named combined
             // Everything from array1 should be in the first half of combined, and everything
             // from array2 should be in the second half of combined.
-
-            for (up < array1.Length && down >= array2.Length; up++, down--)
+            int m = 0;
+            for (int i = 0; i < combined.Length-1; i++)
 
             {
-                combined[up] = array1[up];
-                combined[down] = array2[down];
-            } 
+             if (i <= array1.Length-1)
+                {
+                    combined[i] = array1[i];
+                }
+                else
+                {
+                    combined[i] = array2[m];
+                    m++;
+                }
+             
+            }
 
             Assert.IsTrue(combined.Length == 50);
             Assert.IsTrue(combined[0] == array1[0]);
@@ -139,11 +147,14 @@ namespace ArraysHomework
 
             // Take this list and copy its contents into a new list 
             List<char> copyMe = new List<char>() { 'a', 'b', 'c' };
+            List<char> copiedList = new List<char>();
 
-            copiedList[0] = 'a';
-            copiedList[1] = 'b';
-            copiedList[2] = 'c';
+             for (int i = 0; i < copyMe.Count; i++) 
 
+            {
+             copiedList[i] = copyMe[i];
+
+            }
 
             Assert.IsTrue(copiedList.Count == copyMe.Count);
             Assert.IsTrue(copiedList[0] == 'a');
